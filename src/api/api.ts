@@ -120,9 +120,9 @@ export const getUserGroupList = (): Promise<AxiosResponse<{
  * 指定グループのフォーム一覧を取得する
  * [GET /group/form/list/](https://github.com/gKokasai/api.kokasai.com/blob/master/DOCUMENT.md#get-groupformlistname)
  */
-export const getGroupFormList = (): Promise<AxiosResponse<{
+export const getGroupFormList = (groupName: string): Promise<AxiosResponse<{
   form: string[]
-}>> => axios.get(`${URL}/group/form/list`);
+}>> => axios.get(`${URL}/group/form/list/${groupName}`);
 
 /**
  * 指定グループのフォームの内容を取得する
