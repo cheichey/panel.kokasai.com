@@ -1,6 +1,8 @@
 import { Base64 } from 'js-base64';
 import axios, { AxiosResponse } from 'axios';
-import { FormDefineType, FormSaveType, FormSaveValue } from './dataType';
+import {
+  FormSaveType, GetGroupFormResponse,
+} from './dataType';
 
 axios.defaults.withCredentials = true;
 
@@ -130,24 +132,7 @@ export const getGroupFormList = (groupName: string): Promise<AxiosResponse<{
  * @param groupName 取得するグループの名前
  * @param formName 取得するフォームの名前
  */
-export const getGroupForm = (groupName: string, formName: string): Promise<AxiosResponse<{
-  name: string,
-  description: string,
-  receive: string,
-  limit: string,
-  update: string,
-  values: {
-    [id: string]: {
-      name: string,
-      description: string,
-      type: FormDefineType,
-      value?: FormSaveValue,
-    }
-  },
-  status: number,
-  comment: string,
-
-}>> => axios.get(`${URL}/group/form/get/${groupName}/${formName}`);
+export const getGroupForm = (groupName: string, formName: string): Promise<AxiosResponse<GetGroupFormResponse>> => axios.get(`${URL}/group/form/get/${groupName}/${formName}`);
 
 /** 指定グループのフォーム送信を行う
  * [POST /group/form/submit/](https://github.com/gKokasai/api.kokasai.com/blob/master/DOCUMENT.md#post-groupformsubmitgroupnameformname)
