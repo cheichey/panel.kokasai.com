@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import * as api from '../api/api';
+import { GetGroupFormResponse } from '../api/dataType';
 
 type User = {
   inputId?: string;
@@ -11,6 +12,8 @@ type User = {
   statusCode?: { [key: string]: number };
   documentList?: string[];
   groupList?: string[];
+  formList?: string[];
+  form?: GetGroupFormResponse[];
 }
 
 type authContextType = {

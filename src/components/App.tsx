@@ -12,6 +12,9 @@ import { Pages } from '../pages';
 import Empty from './pages/Empty';
 import Loading from './organisms/login/Loading';
 import Group from './pages/Group';
+import Forms from './pages/form/Forms';
+import GroupForms from './pages/form/GroupForms';
+import Form from './pages/form/Form';
 
 const PrivateRoute: React.FC<RouteProps> = ({ ...props }) => {
   const auth = useAuth();
@@ -46,6 +49,9 @@ const App = (): JSX.Element => (
             <PrivateRoute exact path={Pages.index.href} component={Index} />
             <PrivateRoute exact path={Pages.document.href} component={Document} />
             <PrivateRoute exact path={Pages.group.href} component={Group} />
+            <PrivateRoute exact path={Pages.form.href} component={Forms} />
+            <PrivateRoute exact path={`${Pages.form.href}/:groupName`} component={GroupForms} />
+            <PrivateRoute exact path={`${Pages.form.href}/:groupName/:formName`} component={Form} />
           </Switch>
         </div>
       </Router>

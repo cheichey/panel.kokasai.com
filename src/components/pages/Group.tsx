@@ -24,7 +24,7 @@ const Group = (): JSX.Element => {
   );
   return (
     <ControlPanelTemplate page={Pages.group}>
-      <GroupList />
+      <GroupList path="/group" />
     </ControlPanelTemplate>
   );
 };

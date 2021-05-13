@@ -10,19 +10,19 @@ import List from '../../molecules/List';
 import ListStyle from '../common/List.style';
 
 type Props = {
-  path: '/group' | '/form'
+  path: string;
 }
-const GroupList: FC<Props> = (props): JSX.Element => {
+const GroupFormsList: FC<Props> = (props): JSX.Element => {
   const { path } = props;
   const auth = useAuth();
   const classes = ListStyle();
   return (
     <List className={classes.list}>
       <Typography variant="h6">
-        グループ一覧
+        フォーム一覧
       </Typography>
       {
-        auth.user?.groupList?.map(
+        auth.user?.formList?.map(
           (elem) => (
             <Link to={`${path}/${elem}`}>
               <ListItem className={classes.listItem}>
@@ -41,4 +41,4 @@ const GroupList: FC<Props> = (props): JSX.Element => {
   );
 };
 
-export default GroupList;
+export default GroupFormsList;
