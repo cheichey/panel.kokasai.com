@@ -29,10 +29,12 @@ const useAuthContext = (): AuthContextType => {
 
   const postLogin = () => {
     setRequest({ ...request, isLoad: true });
+    const id = request.inputId;
     api
-      .postLogin(request.inputId)
+      .postLogin(id)
       .then(() => {
         setRequest({ ...request, isRequestPassword: true, isLoad: false });
+        setUser({ ...user, id });
         alert.success("メールが送信されました");
       })
       .catch(() => {

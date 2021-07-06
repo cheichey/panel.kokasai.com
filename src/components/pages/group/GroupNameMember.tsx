@@ -18,12 +18,15 @@ const GroupNameMember = (): JSX.Element => {
         item={auth.user?.group?.[groupName]?.userList}
         load={() => {
           getGroupUserList(groupName).then((response) => {
+            const userList = response.data;
+            const userId = auth.request?.inputId as string;
             auth.setUser({
               ...auth?.user,
               group: {
                 [groupName]: {
                   ...auth.user?.group?.[groupName],
-                  userList: response.data,
+                  userList,
+                  isOwner: userList.owner.includes(userId),
                 },
               },
             });

@@ -13,9 +13,14 @@ const Group = (): JSX.Element => {
       <GroupList
         item={auth.user?.groupList}
         load={() => {
-          getUserGroupList().then((response) =>
-            auth.setUser({ ...auth.user, groupList: response.data.group })
-          );
+          getUserGroupList().then((response) => {
+            const { group } = response.data;
+            auth.setUser({
+              ...auth.user,
+              groupList: group,
+              isAdmin: group.includes("admin"),
+            });
+          });
         }}
         LoadComponent={<LinearLoading />}
       />

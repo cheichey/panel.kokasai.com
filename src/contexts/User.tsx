@@ -13,6 +13,9 @@ export type User = {
       };
       formList?: FormList;
       userList?: UserList;
+      isOwner?: boolean;
     };
   };
+  isAdmin?: boolean;
+  id?: string;
 };
